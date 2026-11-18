@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<script>window.__ttPreload=/thirdLandingPageFeInfra/i.test(navigator.userAgent||"");</script>
-<title>Venmo $750 Christmas Quiz</title>
-<meta name="description" content="Answer 4 quick questions and unlock a $750 Venmo Christmas reward by completing sponsor deals.">
+<title>Venmo $750 Christmas Reward</title>
+<meta name="description" content="Unlock a $750 Venmo Christmas reward by completing sponsor deals.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -3002,10 +3001,6 @@
       .pc-quiz-result-urgency {
         margin-bottom: 14px;
       }
-      #pcQuizClaimBtn {
-        min-height: 52px;
-        font-size: 1.1rem;
-      }
     }
   </style>
 <style>
@@ -5427,10 +5422,6 @@
       .pc-quiz-result-urgency {
         margin-bottom: 14px;
       }
-      #pcQuizClaimBtn {
-        min-height: 52px;
-        font-size: 1.1rem;
-      }
     }
   </style>
 
@@ -5462,7 +5453,7 @@
       </h1>
 
       <p class="hero-copy">
-        Christmas payday? 🎁 Answer 4 quick questions, then complete a few sponsor deals to send <strong class="hw-venmo">$750</strong> straight to your <strong class="hw-venmo">Venmo</strong>.
+        Christmas payday? 🎁 Complete a few sponsor deals to send <strong class="hw-venmo">$750</strong> straight to your <strong class="hw-venmo">Venmo</strong>.
       </p>
 
       <div class="hw-cashcard" aria-label="$750 Venmo reward">
@@ -5484,11 +5475,12 @@
     <section class="section" id="stepTwo">
       <div class="result-wrap">
 
-        <button type="button"
+        <a
           id="finalCta"
-          class="btn js-quiz-cta"
-          data-cta-source="quiz_open"
-        ><span data-cta-label>Start My $750 Claim 🎄</span></button>
+          class="btn"
+          href="https://tk.unlockbonusapp.com/click"
+          onclick="return goLink(this)"
+        ><span data-cta-label>Start My $750 Claim 🎄</span></a>
         <div class="hw-timer">⏳ Today's Christmas drop ends in <b class="js-hw-countdown">--:--:--</b></div>
         <p class="hw-spots">🔥 Only <b class="js-hw-spots">43</b> $750 rewards left today</p>
         <div class="proof-strip">
@@ -5598,714 +5590,9 @@
 </div>
 
 <!-- QUIZ ENTRY -->
-<script>
-  (function () {
-    var boot = window.__PC_LANDER || {};
-
-    document.querySelectorAll('.js-quiz-cta').forEach(function (el) {
-      el.addEventListener('click', function (e) {
-
-        if (typeof window.__PC_OPEN_QUIZ === 'function') {
-          window.__PC_OPEN_QUIZ();
-          return;
-        }
-
-      });
-    });
-
-    document.addEventListener('click', function (e) {
-      var claimBtn = e.target && e.target.closest('#pcQuizClaimBtn');
-      if (!claimBtn) return;
-    }, true);
-  })();
-</script>
-
-<!-- ════════════════════════════════════════════
-     QUICK MATCH QUIZ
-════════════════════════════════════════════ -->
-<style>
-    /* === Ported from reference lander: calc screen + result detail sections === */
-    .btn-activate{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;padding:16px 40px;border:none;border-radius:16px;cursor:pointer;background:linear-gradient(270deg,#D94152,#008CFF,#0074DE,#D94152);background-size:400% 400%;animation:sweep 4s ease infinite;box-shadow:0 4px 18px rgba(217,65,82,0.3);transition:transform 0.18s,box-shadow 0.2s;margin-bottom:12px;text-decoration:none;color:inherit;font:inherit}
-    .btn-activate:visited,.btn-activate:hover,.btn-activate:active{color:inherit;text-decoration:none}
-    .btn-activate:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(217,65,82,0.5)}
-    .btn-activate:active{transform:translateY(1px) scale(0.98)}
-    .btn-activate span{font-size:15px;font-weight:800;color:#fff;letter-spacing:0.03em}
-
-    .calc-wrap{width:100%;max-width:380px;display:flex;flex-direction:column;align-items:center;margin:0 auto}
-    .calc-spinner{width:72px;height:72px;border-radius:50%;border:3px solid rgba(255,255,255,.15);border-top-color:#008CFF;animation:spinCalc 0.9s linear infinite;margin-bottom:28px}
-    @keyframes spinCalc{to{transform:rotate(360deg)}}
-    .calc-title{font-size:12px;font-weight:700;letter-spacing:0.18em;color:rgba(0,140,255,0.9);margin-bottom:28px;text-align:center}
-    .calc-steps{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
-    .calc-step{display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;color:#8599B2;transition:color 0.4s ease}
-    .calc-step.active{color:#fff}
-    .calc-step.done{color:#008CFF}
-    .calc-step-icon{width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color 0.4s ease,background 0.4s ease}
-    .calc-step.active .calc-step-icon{border-color:#008CFF;border-top-color:transparent;animation:spinCalc 0.8s linear infinite}
-    .calc-step.done .calc-step-icon{border-color:#008CFF;background:#008CFF;animation:none}
-    .calc-step.done .calc-step-icon::after{content:'';width:6px;height:10px;border:solid #050D1A;border-width:0 2px 2px 0;transform:rotate(45deg);margin-top:-2px}
-
-    .result-ready-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;border:1px solid rgba(0,140,255,0.45);background:rgba(0,140,255,0.08);font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#008CFF;margin-bottom:14px}
-    .result-heading{font-size:clamp(1.18rem,3.9vw,1.45rem);font-weight:800;line-height:1.25;margin-bottom:18px;color:#fff}
-    .estimate-card{background:#0B1829;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px 16px;width:100%;margin-bottom:12px}
-    .estimate-amount{font-size:clamp(1.95rem,6.8vw,2.6rem);font-weight:900;line-height:1;letter-spacing:-0.02em;background:linear-gradient(90deg,#E65060 0%,#0074DE 55%,#008CFF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .estimate-period{font-size:14px;color:#A8B8CC;margin-top:6px}
-
-    .cta-social{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;font-size:12px;color:#A8B8CC;line-height:1.4}
-    .cta-social strong{color:#fff;font-weight:700}
-    .cta-live{width:8px;height:8px;border-radius:50%;background:#008CFF;box-shadow:0 0 0 2px rgba(0,140,255,0.2),0 0 10px rgba(0,140,255,0.55);flex-shrink:0;animation:livePulse 2s ease-in-out infinite}
-    @keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.55;transform:scale(0.92)}}
-
-    .result-intro-note{margin-top:14px;color:#A8B8CC;font-size:14px;line-height:1.5}
-    .details-row{display:flex;align-items:center;gap:12px;width:100%;margin:18px 0 14px;color:#8599B2;font-size:13px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase}
-    .details-row:before,.details-row:after{content:"";height:1px;background:rgba(0,140,255,.2);flex:1}
-    .howitworks-card,.unlock-status-card{width:100%;margin-top:18px;border:1px solid rgba(0,140,255,.18);border-radius:22px;background:linear-gradient(180deg,rgba(11,25,44,.95),rgba(7,18,33,.98));box-shadow:0 18px 45px rgba(0,0,0,.22)}
-    .howitworks-card{padding:18px 16px 14px;text-align:left}
-    .howitworks-step{display:flex;gap:14px;align-items:flex-start;padding:10px 0}
-    .howitworks-step + .howitworks-step{border-top:1px solid rgba(255,255,255,.06)}
-    .howitworks-num{width:30px;height:30px;flex:0 0 30px;border-radius:50%;display:grid;place-items:center;background:#008CFF;color:#050D1A;font-size:15px;font-weight:900}
-    .howitworks-copy h4{font-size:18px;line-height:1.25;font-weight:800;color:#fff;margin-bottom:4px}
-    .howitworks-copy p{font-size:14px;line-height:1.55;color:#CCD8E8}
-    .howitworks-copy .accent,.unlock-desc .accent{color:#008CFF;font-weight:800}
-    .unlock-status-card{padding:16px 16px 18px;border-color:rgba(217,65,82,.55);position:relative;text-align:left}
-    .unlock-badge{position:absolute;right:16px;top:-10px;background:linear-gradient(90deg,#D94152,#008CFF);color:#fff;font-size:12px;font-weight:800;letter-spacing:.4px;border-radius:999px;padding:6px 12px}
-    .unlock-head{display:flex;gap:12px;align-items:flex-start}
-    .unlock-icon{width:22px;height:22px;flex:0 0 22px;color:#D94152;margin-top:2px}
-    .unlock-title{font-size:18px;font-weight:800;line-height:1.25;color:#fff;margin-bottom:4px}
-    .unlock-desc{font-size:14px;line-height:1.55;color:#CCD8E8}
-    .unlock-divider{height:1px;background:rgba(255,255,255,.08);margin:14px 0}
-    .unlock-foot{display:flex;gap:10px;align-items:flex-start;color:#CCD8E8;font-size:14px;line-height:1.45}
-    .unlock-check{color:#008CFF;font-weight:900;margin-top:1px}
-    .reward-section-label{margin:18px 0 12px;color:#8599B2;font-size:13px;font-weight:800;letter-spacing:2px;text-align:left}
-    .reward-lock-card{width:100%;padding:16px 16px 18px;border:1px solid rgba(0,140,255,.18);border-radius:22px;background:linear-gradient(180deg,rgba(11,25,44,.95),rgba(7,18,33,.98));box-shadow:0 14px 34px rgba(0,0,0,.18);text-align:left}
-    .reward-lock-card + .reward-lock-card{margin-top:14px}
-    .reward-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px}
-    .reward-app{display:flex;align-items:center;gap:14px;min-width:0}
-    .reward-logo{width:44px;height:44px;border-radius:12px;object-fit:cover;background:#0B1829;flex:0 0 44px}
-    .reward-name{font-size:16px;font-weight:800;color:#fff;line-height:1.2}
-    .reward-task{font-size:14px;color:#A8B8CC;line-height:1.25;margin-top:2px}
-    .reward-rate{text-align:right;color:#008CFF;font-weight:900;font-size:17px;line-height:1.05;white-space:nowrap}
-    .reward-rate small{display:block;font-size:11px;color:#A8B8CC;font-weight:700;margin-top:3px}
-    .reward-progress-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px;color:#CCD8E8;font-size:13px}
-    .reward-progress-num{color:#fff;font-weight:800}
-    .reward-bar{height:8px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
-    .reward-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#E65060,#008CFF,#008CFF)}
-    .reward-locked{margin-top:12px;height:44px;border-radius:14px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:#8599B2;font-size:15px;font-weight:900;letter-spacing:.4px}
-
-    /* === Typography rescaled to match the ORIGINAL quiz scale (Inter, rem-based) === */
-    #pcQuizResult,#pcQuizCalc{font-family:'Inter',system-ui,-apple-system,sans-serif;}
-    /* kill default browser <p>/<h4> margins (original lander had no global reset),
-       then restore the intended reference margins the reset would override */
-    #pcQuizResult p,#pcQuizResult h4,#pcQuizCalc p{margin:0;}
-    #pcQuizCalc .calc-title{margin-bottom:28px;}
-    #pcQuizResult .cta-social{margin-top:12px;}
-    #pcQuizResult .result-intro-note{margin-top:14px;}
-    #pcQuizResult .howitworks-copy h4{margin-bottom:6px;}
-    #pcQuizResult .estimate-card{padding:16px;}
-    #pcQuizResult .estimate-period{font-size:1rem;margin-top:8px;}
-    #pcQuizCalc .calc-title{font-size:.72rem;font-weight:800;}
-    #pcQuizCalc .calc-step{font-size:.85rem;}
-    #pcQuizResult .result-heading{font-size:1.45rem;font-weight:900;}
-    #pcQuizResult .estimate-amount{font-size:2.4rem;font-weight:900;}
-    #pcQuizResult .btn-activate span{font-size:1.15rem;font-weight:800;}
-    #pcQuizResult .cta-social{font-size:.78rem;}
-    #pcQuizResult .details-row{font-size:.72rem;letter-spacing:1.4px;}
-    #pcQuizResult .result-intro-note{font-size:.85rem;}
-    #pcQuizResult .howitworks-copy h4{font-size:.95rem;font-weight:800;}
-    #pcQuizResult .howitworks-copy p{font-size:.82rem;}
-    #pcQuizResult .howitworks-num{font-size:.85rem;}
-    #pcQuizResult .unlock-badge{font-size:.72rem;}
-    #pcQuizResult .unlock-title{font-size:1.05rem;font-weight:900;}
-    #pcQuizResult .unlock-desc{font-size:.85rem;}
-    #pcQuizResult .unlock-foot{font-size:.82rem;}
-    #pcQuizResult .reward-section-label{font-size:.68rem;font-weight:800;letter-spacing:1.6px;}
-    #pcQuizResult .reward-name{font-size:.92rem;font-weight:800;}
-    #pcQuizResult .reward-task{font-size:.76rem;}
-    #pcQuizResult .reward-rate{font-size:1rem;font-weight:900;}
-    #pcQuizResult .reward-rate small{font-size:.62rem;}
-    #pcQuizResult .reward-progress-row{font-size:.76rem;}
-    #pcQuizResult .reward-locked{font-size:.8rem;font-weight:900;}
-    @media (max-width:480px){
-      #pcQuizResult .result-heading{font-size:1.3rem;}
-      #pcQuizResult .estimate-amount{font-size:2rem;}
-    }
-
-    /* === Christmas: Winter Snowflakes === */
-    body{background:radial-gradient(circle at 82% 4%,rgba(217,65,82,.18) 0 50px,transparent 150px),radial-gradient(ellipse at 50% 0,#10345D 0,#050D1A 62%) fixed,#050D1A}
-    .hw-deco{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-    .hw-snowflake{position:absolute;opacity:.9;animation:hwFloat 4s ease-in-out infinite}
-    .hw-snowflake--2{animation-delay:-2s}.hw-snowflake--3{animation-delay:-1s}
-    @keyframes hwFloat{50%{transform:translateY(6px) rotate(-14deg)}}
-    .brand-logo{box-shadow:0 12px 32px rgba(0,100,190,.65),0 0 0 2px rgba(0,140,255,.55)}
-    .hw-pill{display:inline-flex;align-items:center;gap:6px;margin:0 auto 14px;padding:6px 12px;border-radius:999px;background:rgba(217,65,82,.14);border:1px solid rgba(217,65,82,.55);color:#FFD58A;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
-    .hero-title .grad{background:linear-gradient(90deg,#008CFF,#D94152);-webkit-background-clip:text;background-clip:text}
-    .hw-bag{margin:4px 0 18px;padding:14px;border-radius:20px;background:linear-gradient(180deg,rgba(0,100,190,.55),rgba(26,0,80,.72));border:1px solid rgba(0,140,255,.28);text-align:center}
-    .hw-bag__title{margin:0 0 10px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0074DE}
-    .hw-games{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .hw-game{position:relative}
-    .hw-game img{width:100%;aspect-ratio:1;border-radius:16px;object-fit:cover}
-    .hw-game span{position:absolute;left:6px;bottom:6px;background:rgba(13,4,32,.88);color:#008CFF;font-size:11px;font-weight:800;padding:3px 7px;border-radius:8px}
-    .hw-bag__note{margin:10px 0 0;font-size:12px;color:#BECEE2}
-    .btn,.pc-sticky-cta__btn,.btn-activate{background:linear-gradient(180deg,#008CFF,#0074DE);animation:hwPulse 1.6s ease-in-out infinite;color:#061324;box-shadow:0 6px 0 #004D99,0 14px 30px rgba(0,140,255,.32)}
-    .btn:hover,.pc-sticky-cta__btn:hover,.btn-activate:hover{box-shadow:0 6px 0 #004D99,0 18px 34px rgba(0,140,255,.45)}
-    .btn-activate span{color:#061324}
-    .btn:disabled{animation:none;opacity:.55;box-shadow:none}
-    @keyframes hwPulse{50%{transform:scale(1.025)}}
-    .hw-timer{display:flex;align-items:center;justify-content:center;gap:6px;margin:14px 0 4px;color:#FFD58A;font-size:13px;font-weight:800;text-align:center}
-    .hw-timer b{color:#fff;font-variant-numeric:tabular-nums}
-    .hw-spots{margin:0 0 14px;text-align:center;color:#BECEE2;font-size:12px}
-    .hw-spots b{color:#008CFF}
-    .pc-quiz-card{background:rgba(8,22,40,.96);border-color:rgba(0,140,255,.25)}
-    .pc-quiz-glow{height:6px;background:repeating-linear-gradient(90deg,#fffffa 0 18px,#D94152 18px 36px,#0074DE 36px 54px)}
-    .pc-quiz-brand img{width:56px;height:56px;border-radius:14px}
-    .pc-qopt-icon.hw-game-icon{width:52px;height:52px;padding:0;overflow:hidden;background:none;border-radius:12px}
-    .pc-qopt-icon.hw-game-icon img{width:100%;height:100%;object-fit:cover}
-    .pc-quiz-option.selected{border-color:rgba(217,65,82,.75);background:linear-gradient(180deg,rgba(217,65,82,.2),rgba(255,255,255,.04))}
-    .estimate-amount{background:linear-gradient(90deg,#008CFF,#D94152);-webkit-background-clip:text;background-clip:text}
-    @media (max-width:480px){
-      .hw-bag{padding:12px 10px 16px;margin-bottom:14px}
-      .hw-games{grid-template-columns:repeat(6,1fr);gap:6px}
-      .hw-game img{border-radius:11px}
-      .hw-game span{left:50%;bottom:-9px;transform:translateX(-50%);font-size:10px;padding:2px 5px;border-radius:6px}
-      .hw-bag__note{margin-top:16px}
-    }
-    .hw-result-timer{margin:0 0 12px;color:#FFD58A;font-size:13px;font-weight:800}
-    .hw-result-timer b{color:#fff;font-variant-numeric:tabular-nums}
-
-    .hw-venmo-icon{display:block;flex:0 0 auto;background-color:transparent;background-image:url("https://upload.wikimedia.org/wikipedia/commons/8/84/Venmo_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original");background-position:center;background-size:contain;background-repeat:no-repeat}
-    .hw-pair{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:18px;position:relative;z-index:1}
-    .hw-pair .hw-venmo-icon,.hw-pair img{width:76px;height:76px;border-radius:20px;object-fit:cover}
-    .hw-pair .hw-venmo-icon{box-shadow:0 0 0 2px rgba(0,140,255,.55),0 12px 30px rgba(0,140,255,.25)}
-    .hw-pair img{box-shadow:0 0 0 2px rgba(0,140,255,.55),0 12px 30px rgba(0,100,190,.65)}
-    .hw-pair__x{color:#fffffa;font-size:22px;font-weight:900;opacity:.85}
-    .hw-venmo{color:#008CFF}
-    .hw-payout{display:flex;align-items:center;gap:12px;margin:0 0 14px;padding:12px 14px;border-radius:18px;background:linear-gradient(135deg,rgba(0,140,255,.16),rgba(0,140,255,.04));border:1px solid rgba(0,140,255,.45);text-align:left}
-    .hw-payout .hw-venmo-icon{width:44px;height:44px;border-radius:12px}
-    .hw-payout__copy{flex:1;min-width:0}
-    .hw-payout__label{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#FFD58A}
-    .hw-payout__title{font-size:16px;font-weight:900;color:#fff;line-height:1.2}
-    .hw-payout__sub{font-size:12px;color:#BECEE2}
-    .hw-payout__amt{text-align:right}
-    .hw-payout__amt strong{display:block;font-size:24px;font-weight:900;color:#008CFF;line-height:1}
-    .hw-payout__amt span{font-size:9px;font-weight:800;letter-spacing:.08em;color:#BECEE2}
-    .pc-qopt-icon.hw-venmo-opt{width:52px;height:52px;padding:0;overflow:hidden;border-radius:12px;background:none}
-    .pc-qopt-icon.hw-venmo-opt .hw-venmo-icon{width:100%;height:100%}
-    .pc-qopt-icon.hw-emoji-opt{width:52px;height:52px;border-radius:12px;font-size:26px;background:rgba(255,255,255,.06)}
-
-    .hw-spots{margin-bottom:16px}
-    @media (max-width:480px){
-      .wrap{padding-top:18px}
-      .hw-pair{margin-bottom:12px}
-      .hw-pair .hw-venmo-icon,.hw-pair img{width:58px;height:58px;border-radius:16px}
-      .hw-pill{margin-bottom:10px;font-size:11px}
-      .hero-title{font-size:33px;margin-bottom:10px}
-      .hero-copy{font-size:14px;line-height:1.45;margin-bottom:14px}
-      .hw-bag{padding:10px 10px 14px;margin-bottom:12px}
-      .hw-bag__title{margin-bottom:8px}
-      .hw-payout{padding:9px 12px;margin-bottom:12px}
-      .hw-payout__sub{display:none}
-      .hero-title{font-size:31px}
-      .hw-bag__title{font-size:11px;margin-bottom:6px}
-      .hw-games{gap:5px}
-    }
-
-    /* === Christmas result screen === */
-    .pc-quiz-confetti{z-index:0}
-    .pc-quiz-body{position:relative;z-index:1}
-    .pc-quiz-card.hw-is-result .pc-quiz-brand{display:none}
-    .pc-quiz-card.hw-is-result .pc-quiz-head{padding-top:14px;padding-bottom:12px}
-    .hw-result-card{position:relative;margin:0 0 16px;padding:14px 16px 0;border-radius:20px;background:linear-gradient(180deg,rgba(0,100,190,.55),rgba(8,22,40,.92));border:1px solid rgba(0,140,255,.35);box-shadow:0 18px 40px rgba(0,0,0,.35);overflow:hidden;text-align:center}
-    .hw-result-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
-    .hw-mini-pair{display:flex;align-items:center;gap:6px;color:#fffffa;font-weight:900;font-size:13px}
-    .hw-mini-pair .hw-venmo-icon,.hw-mini-pair img{width:30px;height:30px;border-radius:9px;object-fit:cover}
-    .hw-unlocked{padding:5px 10px;border-radius:999px;background:rgba(217,65,82,.16);border:1px solid rgba(217,65,82,.55);color:#FFD58A;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
-    #pcQuizResult .hw-result-kicker{font-size:.95rem;font-weight:800;color:#fffffa;margin-bottom:8px}
-    #pcQuizResult .hw-result-card .estimate-amount{font-size:2.7rem;line-height:1}
-    #pcQuizResult .hw-result-card .estimate-period{font-size:.8rem;color:#BECEE2;margin:8px 0 14px}
-    .hw-pick{display:flex;align-items:center;gap:10px;padding:10px 12px;margin-bottom:14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);text-align:left}
-    .hw-pick[hidden]{display:none}
-    .hw-pick img{width:40px;height:40px;border-radius:10px;object-fit:cover;flex:0 0 40px}
-    .hw-pick div{flex:1;min-width:0}
-    .hw-pick b{display:block;color:#fffffa;font-size:.92rem}
-    .hw-pick span{display:block;color:#9BB2CE;font-size:.74rem}
-    .hw-pick strong{color:#008CFF;font-size:1.1rem;font-weight:900}
-    #pcQuizResult .hw-result-timer{margin:0 -16px;padding:10px 12px;background:rgba(217,65,82,.14);border-top:1px solid rgba(217,65,82,.3);color:#FFD58A;font-size:.82rem;font-weight:800}
-    #pcQuizResult .hw-result-timer b{color:#fffffa;font-variant-numeric:tabular-nums}
-    .hw-gold{color:#008CFF}
-    .cta-live{background:#008CFF;box-shadow:0 0 0 2px rgba(0,140,255,.2),0 0 10px rgba(0,140,255,.55)}
-    #pcQuizResult .hw-section-label{margin:24px 0 10px;color:#9BB2CE;font-size:.7rem;font-weight:800;letter-spacing:.14em;text-align:left}
-    #pcQuizResult .howitworks-card{margin-top:0;padding:6px 14px;border-radius:18px}
-    #pcQuizResult .howitworks-num{width:26px;height:26px;flex:0 0 26px;background:#0074DE;color:#061324;font-size:.8rem}
-    #pcQuizResult .howitworks-copy h4{font-size:.92rem}
-    #pcQuizResult .howitworks-copy p{font-size:.8rem;line-height:1.45}
-
-    /* === Venmo sweepstakes Christmas === */
-    .hw-pair--solo .hw-venmo-icon{width:84px;height:84px;border-radius:22px;box-shadow:0 0 0 2px rgba(0,140,255,.55),0 14px 36px rgba(0,140,255,.3)}
-    .hero-title .grad{background:linear-gradient(90deg,#008CFF,#9BD5FF);-webkit-background-clip:text;background-clip:text}
-    .btn,.pc-sticky-cta__btn,.btn-activate{background:linear-gradient(180deg,#0074DE,#008CFF);color:#fff;box-shadow:0 6px 0 #004D99,0 14px 30px rgba(0,140,255,.32)}
-    .btn-activate span{color:#fff}
-    .btn:hover,.pc-sticky-cta__btn:hover,.btn-activate:hover{box-shadow:0 6px 0 #004D99,0 18px 34px rgba(0,140,255,.45)}
-    .hw-cashcard{position:relative;margin:4px 0 16px;padding:16px;border-radius:22px;text-align:left;background:linear-gradient(145deg,#103D6B,#081C34 70%);border:1px solid rgba(0,140,255,.4);box-shadow:0 18px 40px rgba(0,0,0,.4);overflow:hidden}
-    .hw-cashcard__top{display:flex;align-items:center;gap:10px}
-    .hw-cashcard__top .hw-venmo-icon{width:40px;height:40px;border-radius:11px}
-    .hw-cashcard__brand{flex:1}
-    .hw-cashcard__brand b{display:block;font-size:16px;color:#fff}
-    .hw-cashcard__brand span{display:block;font-size:12px;color:#FFD58A;font-weight:700}
-    .hw-cashcard__status{padding:4px 9px;border-radius:999px;background:rgba(217,65,82,.16);border:1px solid rgba(217,65,82,.5);color:#FFD58A;font-size:10px;font-weight:800;letter-spacing:.08em}
-    .hw-cashcard__amt{margin:14px 0 12px;font-size:54px;font-weight:900;letter-spacing:-.03em;line-height:1;color:#fff}
-    .hw-cashcard__amt small{font-size:26px;color:#9BD5FF}
-    .hw-cashcard__rows{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-    .hw-cashcard__rows div{padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.06)}
-    .hw-cashcard__rows span{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#9BB2CE;font-weight:800}
-    .hw-cashcard__rows b{display:block;font-size:13px;color:#fff}
-    .hw-cashcard__gift{position:absolute;right:14px;top:58px;width:64px;height:64px;transform:rotate(8deg);pointer-events:none}
-    .pc-quiz-brand .hw-quiz-logo{width:52px;height:52px;border-radius:14px}
-    .hw-pick__icon{width:40px;height:40px;border-radius:10px;flex:0 0 40px}
-    .hw-pick strong{color:#008CFF}
-    .hw-mini-pair span{font-size:14px}
-    #pcQuizResult .hw-result-card .estimate-amount{background:none;-webkit-text-fill-color:#fff;color:#fff}
-    .pc-tier{background:rgba(255,255,255,.06);color:#A8B8CC;border-color:rgba(255,255,255,.1)}
-    .foot{font-size:11px;line-height:1.5;color:#8599B2;text-align:center}
-    #pcQuizResult .hw-legal{margin-top:14px;font-size:.7rem;color:#8599B2;line-height:1.5}
-    .pc-quiz-option.selected{border-color:rgba(0,140,255,.7);background:linear-gradient(180deg,rgba(0,140,255,.16),rgba(255,255,255,.04))}
-    @media (max-width:480px){
-      .hw-pair--solo .hw-venmo-icon{width:64px;height:64px;border-radius:18px}
-      .hw-cashcard{padding:14px}
-      .hw-cashcard__amt{font-size:46px;margin:10px 0}
-      .hw-cashcard__gift{width:52px;height:52px;top:52px}
-    }
-
-    .btn,.pc-sticky-cta__btn,.btn-activate{background:linear-gradient(180deg,#0074DE,#0064C5)}
-    .pc-quiz-glow{background:repeating-linear-gradient(90deg,#FFFFFF 0 18px,#D94152 18px 36px,#008CFF 36px 54px)}
-    button:focus-visible,a:focus-visible{outline:3px solid #FFD58A;outline-offset:4px}
-    @media (prefers-reduced-motion:reduce){
-      .hw-snowflake,.btn,.pc-sticky-cta__btn,.btn-activate,.pc-conf-dot,.pc-quiz-earned-float,.cta-live{animation:none}
-      .pc-quiz-overlay,.pc-quiz-card,.pc-quiz-option{transition:none}
-    }
-</style>
-
-<div class="pc-quiz-overlay" id="pcQuizOverlay" aria-hidden="true">
-  <div class="pc-quiz-card" id="pcQuizCard" role="dialog" aria-modal="true" aria-labelledby="pcQuizStepLabel">
-    <div class="pc-quiz-glow"></div>
-    <div class="pc-quiz-confetti" id="pcQuizConfetti"></div>
-
-      <div class="pc-quiz-head">
-      <div class="pc-quiz-brand">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Venmo_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" class="hw-venmo-icon hw-quiz-logo" role="img" alt="Venmo" style="object-fit:contain;background:transparent;">
-      </div>
-      <div class="pc-quiz-head-row">
-        <span class="pc-quiz-step-label" id="pcQuizStepLabel">STEP 1 OF 4</span>
-        <button class="pc-quiz-close" type="button" id="pcQuizClose" aria-label="Close">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 1 0 5.7 7.11L10.59 12l-4.9 4.89a1 1 0 1 0 1.42 1.42L12 13.41l4.89 4.9a1 1 0 0 0 1.42-1.42L13.41 12l4.9-4.89a1 1 0 0 0-.01-1.4z"/></svg>
-        </button>
-      </div>
-      <div class="pc-quiz-progress-wrap">
-        <div class="pc-quiz-bar-track"><div class="pc-quiz-bar-fill" id="pcQuizBarFill" style="width:25%"></div></div>
-        <div class="pc-quiz-earned-float" id="pcQuizEarnedFloat">+$0.00</div>
-      </div>
-    </div>
-
-    <div class="pc-quiz-body">
-      <!-- QUESTION (rendered dynamically by JS) -->
-      <div class="pc-quiz-slide active" id="pcQuizQuestionSlide">
-        <div class="pc-quiz-q" id="pcQuizQText"></div>
-        <div class="pc-quiz-q-sub" id="pcQuizQSub"></div>
-        <div class="pc-quiz-context" id="pcQuizContext" style="display:none;"></div>
-        <div class="pc-quiz-options" id="pcQuizOptionsWrap"></div>
-
-        <div class="pc-quiz-encourage" id="pcQuizEncourage">
-          <div class="pc-quiz-spark">
-            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <defs>
-                <linearGradient id="pcSparkGrad" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#E65060"/>
-                  <stop offset="50%" stop-color="#008CFF"/>
-                  <stop offset="100%" stop-color="#008CFF"/>
-                </linearGradient>
-              </defs>
-              <path d="M24,4 L29,19 L44,24 L29,29 L24,44 L19,29 L4,24 L19,19 Z" fill="url(#pcSparkGrad)"/>
-              <path d="M39,3 L40.6,7.4 L45,9 L40.6,10.6 L39,15 L37.4,10.6 L33,9 L37.4,7.4 Z" fill="url(#pcSparkGrad)"/>
-            </svg>
-          </div>
-          <p id="pcQuizEncourageText"></p>
-        </div>
-
-        <button class="btn pc-quiz-advance" type="button" id="pcQuizAdvanceBtn" disabled>Next</button>
-      </div>
-
-      <!-- CALCULATING -->
-      <div class="pc-quiz-calc" id="pcQuizCalc">
-        <div class="calc-wrap">
-          <div class="calc-spinner" aria-hidden="true"></div>
-          <p class="calc-title">RESERVING YOUR $750 REWARD…</p>
-          <div class="calc-steps">
-            <div class="calc-step" id="calcStep1"><span class="calc-step-icon" aria-hidden="true"></span><span>Checking Christmas reward availability</span></div>
-            <div class="calc-step" id="calcStep2"><span class="calc-step-icon" aria-hidden="true"></span><span>Matching your sponsor deals</span></div>
-            <div class="calc-step" id="calcStep3"><span class="calc-step-icon" aria-hidden="true"></span><span>Reserving $750 for your Venmo 🎄</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RESULT -->
-      <div class="pc-quiz-result" id="pcQuizResult">
-        <div class="hw-result-card">
-          <div class="hw-result-top">
-            <div class="hw-mini-pair" aria-label="Venmo"><img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Venmo_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" class="hw-venmo-icon" role="img" alt="Venmo" style="object-fit:contain;background:transparent;"><span>Venmo</span></div>
-            <span class="hw-unlocked">🎄 Bonus unlocked</span>
-          </div>
-          <p class="hw-result-kicker">Your Christmas reward is reserved</p>
-          <p class="estimate-amount">$750.00</p>
-          <p class="estimate-period">Pending · complete your steps to release it</p>
-          <div class="hw-pick" id="hwPick">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Venmo_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" class="hw-venmo-icon hw-pick__icon" role="img" alt="Venmo" style="object-fit:contain;background:transparent;">
-            <div><b>Your Venmo</b><span id="hwPickSub">Destination · paid after verification</span></div>
-            <strong>$750</strong>
-          </div>
-          <div class="hw-result-timer">⏳ Reserved for you for <b class="js-hw-countdown">--:--:--</b></div>
-        </div>
-
-        <a class="btn-activate js-final-cta" id="pcQuizClaimBtn" data-final-action="link" data-cta-source="quiz_result_claim" data-label-logged-out="Claim My $750 Now →" data-label-logged-in="Claim My $750 Now →" href="https://giftclick.org/?offer_id=3318&aff_id=2609" data-affhub-main-cta="true"><span data-cta-label>Claim My $750 Now →</span></a>
-        <p class="cta-social"><span class="cta-live" aria-hidden="true"></span><span><strong id="bonusClaimCount">705</strong> people claimed their $750 in the last hour</span></p>
-
-        <p class="hw-section-label">HOW TO CLAIM</p>
-
-        <div class="howitworks-card">
-          <div class="howitworks-step">
-            <div class="howitworks-num">1</div>
-            <div class="howitworks-copy">
-              <h4>Enter your email</h4>
-              <p>Use a valid email address. It’s how your claim is confirmed and tracked.</p>
-            </div>
-          </div>
-          <div class="howitworks-step">
-            <div class="howitworks-num">2</div>
-            <div class="howitworks-copy">
-              <h4>Complete 3–5 deals</h4>
-              <p>Try sponsor apps, surveys, or free trials. Finish each deal as described in its terms.</p>
-            </div>
-          </div>
-          <div class="howitworks-step">
-            <div class="howitworks-num">3</div>
-            <div class="howitworks-copy">
-              <h4>Get your $750 to Venmo</h4>
-              <p>Once your deals are verified, your reward is released to your <strong class="hw-venmo">Venmo</strong>.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="unlock-status-card">
-          <div class="unlock-badge">IMPORTANT</div>
-          <div class="unlock-head">
-            <svg class="unlock-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 10V7.5A5 5 0 0117 7.5V10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <rect x="5" y="10" width="14" height="10" rx="2.5" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            <div>
-              <div class="unlock-title">Verification Required</div>
-              <p class="unlock-desc">Your <span class="accent">$750</span> is released only after you enter a valid email and complete <span class="accent">3–5 sponsor deals</span>. Read each deal's terms so it counts.</p>
-            </div>
-          </div>
-          <div class="unlock-divider"></div>
-          <div class="unlock-foot"><span class="unlock-check">&#10003;</span><span>Most people finish in about 10 minutes.</span></div>
-        </div>
-        <p class="hw-legal">Not affiliated with Venmo. Must be 18+ and a US resident. Deal completion required. Results vary.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- QUIZ LOGIC -->
-<script>
-  (function () {
-    function icon(paths) {
-      return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + paths + '</svg>';
-    }
-
-    var ICON_COFFEE   = icon('<path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/>');
-    var ICON_CLOCK    = icon('<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>');
-    var ICON_TREND    = icon('<path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/>');
-    var ICON_ZAP      = icon('<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>');
-    var ICON_DOLLAR   = icon('<line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>');
-    var ICON_STAR     = icon('<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/>');
-    var ICON_HELP     = icon('<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>');
-    var ICON_BAG       = icon('<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>');
-
-    var questions = [
-      {
-        text: "What would you do with $750 this Christmas? 🎄",
-        sub: "Pick one. It helps us match your sponsor deals.",
-        opts: [
-          { title: "Pay some bills", sub: "Breathing room this month", icon: '🧾', iconClass: "hw-emoji-opt" },
-          { title: "Go shopping", sub: "Christmas gifts & more", icon: '🛍️', iconClass: "hw-emoji-opt" },
-          { title: "Save it", sub: "Build my stack", icon: '🏦', iconClass: "hw-emoji-opt" },
-          { title: "Treat myself", sub: "I deserve it", icon: '☕', iconClass: "hw-emoji-opt" }
-        ],
-        reward: 150
-      },
-      {
-        text: "Do you already have Venmo? 💸",
-        sub: "Your $750 is sent to your Venmo once verified.",
-        isVerticalStack: true,
-        opts: [
-          { title: "Yes, I use Venmo", sub: "Fastest way to get paid", icon: '<img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Venmo_logo.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" class="hw-venmo-icon" role="img" alt="Venmo" style="object-fit:contain;background:transparent;">', iconClass: "hw-venmo-opt", badge: "FASTEST" },
-          { title: "Not yet", sub: "It's free and takes 2 minutes to set up", icon: '📲', iconClass: "hw-emoji-opt" }
-        ],
-        reward: 200
-      },
-      {
-        text: "Can you complete 3–5 quick sponsor deals? 🎁",
-        context: "Sponsors fund the $750 rewards. Deals are things like app sign-ups, surveys, or free trials. You only unlock your reward after they're completed and verified.",
-        isVerticalStack: true,
-        opts: [
-          { title: "Yes, let's do it", sub: "I'll finish my deals today", icon: ICON_ZAP, badge: "RECOMMENDED" },
-          { title: "Yes, but show me how", sub: "Walk me through the steps", icon: ICON_HELP },
-          { title: "Not sure yet", sub: "I'll take a look first", icon: ICON_CLOCK }
-        ],
-        reward: 250
-      },
-      {
-        text: "When do you want your $750? ⏳",
-        sub: "Christmas rewards are limited each day.",
-        isVerticalStack: true,
-        opts: [
-          { title: "Today", sub: "I'm ready right now", icon: '🔥', iconClass: "hw-emoji-opt", badge: "MOST POPULAR" },
-          { title: "This week", sub: "Before the weekend", icon: '📅', iconClass: "hw-emoji-opt" },
-          { title: "Before Christmas", sub: "By December 25", icon: '🎅', iconClass: "hw-emoji-opt" }
-        ],
-        reward: 150
-      }
-    ];
-
-    var encouragements = [
-      "Great choice! 🎄 $150 of your reward unlocked.",
-      "Perfect. We'll send it straight to your Venmo. 🎁",
-      "Great! That's the only thing standing between you and $750.",
-      "Done! Let's lock in your $750. 🎄"
-    ];
-
-    var TOTAL = questions.length;
-    var current = 0;
-    var answers = [];
-    var selectedIndex = null;
-
-    var overlay       = document.getElementById('pcQuizOverlay');
-    var card          = document.getElementById('pcQuizCard');
-    var closeBtn      = document.getElementById('pcQuizClose');
-    var barFill       = document.getElementById('pcQuizBarFill');
-    var stepLabel     = document.getElementById('pcQuizStepLabel');
-    var earnedFloat   = document.getElementById('pcQuizEarnedFloat');
-    var questionSlide = document.getElementById('pcQuizQuestionSlide');
-    var qTextEl       = document.getElementById('pcQuizQText');
-    var qSubEl        = document.getElementById('pcQuizQSub');
-    var contextEl     = document.getElementById('pcQuizContext');
-    var optionsWrap   = document.getElementById('pcQuizOptionsWrap');
-    var encourageEl   = document.getElementById('pcQuizEncourage');
-    var encourageTxt  = document.getElementById('pcQuizEncourageText');
-    var advanceBtn    = document.getElementById('pcQuizAdvanceBtn');
-    var resultEl      = document.getElementById('pcQuizResult');
-    var confetti       = document.getElementById('pcQuizConfetti');
-    var calcEl        = document.getElementById('pcQuizCalc');
-    var calcSteps     = calcEl ? calcEl.querySelectorAll('.calc-step') : [];
-    var calcTimers    = [];
-    var bonusTimer    = null;
-
-    // Tabela ajustada para a casa das centenas
-    var RANGES = [
-      ['$150–$320', '$180–$380', '$220–$440', '$280–$560'],
-      ['$240–$480', '$290–$580', '$350–$700', '$420–$840'],
-      ['$320–$640', '$380–$760', '$460–$920', '$550–$1100'],
-      ['$450–$900', '$550–$1100','$650–$1300','$800–$1600']
-    ];
-
-    function openQuiz() {
-      if (!overlay) return;
-      overlay.classList.add('open');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeQuiz() {
-      if (!overlay) return;
-      overlay.classList.remove('open');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    function setProgress(step) {
-      var pct = Math.round((step / TOTAL) * 100);
-      if (pct > 100) pct = 100;
-      if (barFill) barFill.style.width = pct + '%';
-      if (stepLabel) stepLabel.textContent = step <= TOTAL ? 'STEP ' + step + ' OF ' + TOTAL : '';
-    }
-
-    function renderQuestion() {
-      var q = questions[current];
-      if (qTextEl) qTextEl.innerHTML = q.text;
-      if (qSubEl) qSubEl.textContent = q.sub || '';
-      if (contextEl) {
-        if (q.context) {
-          contextEl.textContent = q.context;
-          contextEl.style.display = 'block';
-        } else {
-          contextEl.style.display = 'none';
-        }
-      }
-
-      if (optionsWrap) {
-        optionsWrap.innerHTML = '';
-        optionsWrap.className = 'pc-quiz-options';
-        if (q.isPaymentQuestion) {
-          optionsWrap.classList.add('payment-grid');
-        } else if (q.isVerticalStack) {
-          optionsWrap.classList.add('vertical-stack');
-        }
-      }
-
-      selectedIndex = null;
-      if (encourageEl) encourageEl.classList.remove('show');
-      if (advanceBtn) {
-        advanceBtn.disabled = true;
-        advanceBtn.textContent = (current === TOTAL - 1) ? 'Finish' : 'Next';
-      }
-      setProgress(current + 1);
-
-      q.opts.forEach(function (opt, i) {
-        var el = document.createElement('button');
-        el.type = 'button';
-        el.setAttribute('aria-pressed', 'false');
-        if (q.isPaymentQuestion) {
-          el.className = 'pc-quiz-option ' + opt.customClass;
-          el.innerHTML = opt.svg + '<span class="pc-qopt-radio"></span>';
-        } else {
-          el.className = 'pc-quiz-option' + (opt.badge ? ' has-badge' : '') + (opt.variant ? ' fill-' + opt.variant : '');
-          el.innerHTML =
-            (opt.badge ? '<span class="pc-qopt-badge">★ ' + opt.badge + '</span>' : '') +
-            '<div class="pc-qopt-icon' + (opt.game ? ' hw-game-icon' : '') + (opt.iconClass ? ' ' + opt.iconClass : '') + '">' + opt.icon + '</div>' +
-            '<div class="pc-qopt-texts"><span class="pc-qopt-title">' + opt.title + '</span><span class="pc-qopt-sub">' + opt.sub + '</span></div>' +
-            '<span class="pc-qopt-radio"></span>';
-        }
-
-        el.addEventListener('click', function () {
-          if (selectedIndex === i) return;
-          selectedIndex = i;
-          answers[current] = i;
-          Array.prototype.forEach.call(optionsWrap.children, function (c) {
-            c.classList.toggle('selected', c === el);
-            c.setAttribute('aria-pressed', String(c === el));
-            c.classList.toggle('dimmed', c !== el);
-          });
-          onSelect(q);
-        });
-        optionsWrap.appendChild(el);
-      });
-    }
-
-    function onSelect(q) {
-      var opt = q.opts[selectedIndex];
-      var amt = '+$' + ((opt && opt.reward) || q.reward);
-      if (earnedFloat) {
-        earnedFloat.textContent = amt;
-        earnedFloat.classList.remove('pop');
-        void earnedFloat.offsetWidth;
-        earnedFloat.classList.add('pop');
-      }
-      if (encourageTxt) encourageTxt.innerHTML = encouragements[current] + ' <b>' + amt + '</b>';
-      setTimeout(function () { if (encourageEl) encourageEl.classList.add('show'); }, 180);
-      if (advanceBtn) advanceBtn.disabled = false;
-    }
-
-    function startBonusClaimCounter() {
-      stopBonusClaimCounter();
-      var el = document.getElementById('bonusClaimCount');
-      if (!el) return;
-      var count = 680 + Math.floor(Math.random() * 40);
-      el.textContent = String(count);
-      bonusTimer = setInterval(function () {
-        count += Math.random() > 0.75 ? 2 : 1;
-        el.textContent = String(count);
-      }, 4000);
-    }
-
-    function stopBonusClaimCounter() {
-      if (bonusTimer) { clearInterval(bonusTimer); bonusTimer = null; }
-    }
-
-    function resetCalc() {
-      calcTimers.forEach(function (t) { clearTimeout(t); });
-      calcTimers = [];
-      if (calcEl) calcEl.classList.remove('active');
-      Array.prototype.forEach.call(calcSteps, function (s) {
-        s.classList.remove('active', 'done');
-      });
-    }
-
-    function startCalculating() {
-      if (questionSlide) questionSlide.classList.remove('active');
-      resetCalc();
-      if (calcEl) calcEl.classList.add('active');
-      setProgress(TOTAL + 1);
-      if (stepLabel) stepLabel.textContent = 'CALCULATING';
-
-      var delays = [600, 1400, 2200];
-      var doneDelays = [1200, 2000, 2800];
-      Array.prototype.forEach.call(calcSteps, function (step, idx) {
-        calcTimers.push(setTimeout(function () { step.classList.add('active'); }, delays[idx]));
-        calcTimers.push(setTimeout(function () { step.classList.remove('active'); step.classList.add('done'); }, doneDelays[idx]));
-      });
-      calcTimers.push(setTimeout(showResult, 3400));
-    }
-
-    function showResult() {
-      if (calcEl) calcEl.classList.remove('active');
-      if (questionSlide) questionSlide.classList.remove('active');
-      if (resultEl) resultEl.classList.add('active');
-      setProgress(TOTAL + 1);
-      startBonusClaimCounter();
-      if (card) card.classList.add('hw-is-result');
-      var when = questions[3] && questions[3].opts[answers[3]];
-      var pickSub = document.getElementById('hwPickSub');
-      if (when && pickSub) pickSub.textContent = 'Destination · ' + (when.title === 'Today' ? 'claim today' : 'claim ' + when.title.toLowerCase());
-
-      if (confetti) {
-        var cols = ['#D94152', '#008CFF', '#ffffff', '#FFD58A'];
-        confetti.innerHTML = '';
-        for (var i = 0; i < 26; i++) {
-          var dd = document.createElement('div');
-          dd.className = 'pc-conf-dot';
-          var sz = 3 + Math.random() * 5;
-          dd.style.cssText = 'left:' + (Math.random() * 100) + '%;top:' + (5 + Math.random() * 35) + '%;width:' + sz + 'px;height:' + sz + 'px;background:' + cols[Math.floor(Math.random() * cols.length)] + ';animation-delay:' + (Math.random() * .5) + 's;animation-duration:' + (0.7 + Math.random() * .7) + 's;';
-          confetti.appendChild(dd);
-        }
-      }
-    }
-
-    if (advanceBtn) advanceBtn.addEventListener('click', function () {
-      if (advanceBtn.disabled) return;
-      if (current < TOTAL - 1) { current++; renderQuestion(); }
-      else { startCalculating(); }
-    });
-
-    if (closeBtn) closeBtn.addEventListener('click', closeQuiz);
-    if (card) card.addEventListener('click', function (e) { e.stopPropagation(); });
-    if (overlay) overlay.addEventListener('click', function (e) { if (e.target === overlay) closeQuiz(); });
-
-    window.__PC_OPEN_QUIZ = function () {
-      current = 0;
-      answers = [];
-      selectedIndex = null;
-      resetCalc();
-      stopBonusClaimCounter();
-      if (resultEl) resultEl.classList.remove('active');
-      if (card) card.classList.remove('hw-is-result');
-      if (questionSlide) questionSlide.classList.add('active');
-      renderQuestion();
-      openQuiz();
-    };
-  })();
-</script>
-  
 <!-- STICKY BOTTOM CTA (mobile only) -->
 <div class="pc-sticky-cta" id="pcStickyCta" aria-hidden="true">
-  <button type="button" class="pc-sticky-cta__btn js-quiz-cta" data-cta-source="quiz_sticky">Start My $750 Claim 🎄</button>
+  <a class="pc-sticky-cta__btn" href="https://tk.unlockbonusapp.com/click" onclick="return goLink(this)">Start My $750 Claim 🎄</a>
 </div>
 
 <script>
@@ -6313,16 +5600,6 @@
   var sticky = document.getElementById('pcStickyCta');
   var heroBtn = document.getElementById('finalCta');
   if (!sticky || !heroBtn) return;
-
-  // Forward the sticky button click to the original hero button so the same
-  // quiz/auth logic runs (the .js-quiz-cta handler binds before this element exists).
-  var stickyBtn = sticky.querySelector('.pc-sticky-cta__btn');
-  if (stickyBtn) {
-    stickyBtn.addEventListener('click', function (e) {
-
-      heroBtn.click();
-    });
-  }
 
   var ticking = false;
   function update() {
@@ -6383,43 +5660,31 @@
 
 </div>
 
-<script>
-(function(){
-  var PRIMARY="https://giftclick.org/?offer_id=3318&aff_id=2609";
-  var UNDERAGE="https://giftclick.org/?offer_id=3318&aff_id=2609";
-  var currentHref=PRIMARY;
-  function applyHref(h){
-    currentHref=h;
-    document.querySelectorAll("a.js-final-cta").forEach(function(el){
-      el.setAttribute('data-affhub-main-cta','true');
-      if(el.tagName==='A'){el.setAttribute('href',h);}
-      else{el.setAttribute('data-cta-href',h);}
-    });
-  }
-  applyHref(PRIMARY);
-  
-  
-  // Delegated click handler: treat any matched CTA (a or button) as a link to currentHref
-  document.addEventListener('click',function(e){
-    var t=e.target;
-    while(t && t!==document){
-      if(t.matches && t.matches("a.js-final-cta")){
-        var h=t.getAttribute('href')||t.getAttribute('data-cta-href')||currentHref;
-        if(t.tagName==='A'){t.setAttribute('href',h);}
-        else{t.setAttribute('data-cta-href',h);}
-        
-        // Use shared goLink if available (provides WebView bypass)
-        if(typeof goLink==='function' && t.tagName==='A'){return goLink(t);}
-        
-        
-        if(t.tagName!=='A'){window.location.href=h;}
-        return;
-      }
-      t=t.parentNode;
+
+<style>
+    /* solid title + buttons — gradients removed */
+    .hero-title .grad {
+      background: linear-gradient(90deg, #008CFF, #9BD5FF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: #008CFF;
+      -webkit-text-fill-color: transparent;
     }
-  },true);
-  
-})();
-</script>
+    .btn,
+    .pc-sticky-cta__btn {
+      background: #0074DE;
+      animation: none;
+      box-shadow: 0 4px 18px rgba(0, 116, 222, 0.35);
+    }
+    .btn:hover,
+    .pc-sticky-cta__btn:hover {
+      box-shadow: 0 8px 26px rgba(0, 116, 222, 0.5);
+    }
+    .btn-activate {
+      background: #0074DE;
+      animation: none;
+      box-shadow: 0 4px 18px rgba(0, 116, 222, 0.35);
+    }
+</style>
 </body>
 </html>
